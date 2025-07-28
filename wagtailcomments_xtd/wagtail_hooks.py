@@ -1,15 +1,15 @@
-from django.core import urlresolvers
+from django.urls import reverse
 from wagtailcomments_xtd import urls
-from wagtail.wagtailcore import hooks
-from django.conf.urls import include, url
-from wagtail.wagtailadmin.menu import MenuItem
-from django.utils.translation import ugettext_lazy as _
+from wagtail import hooks
+from django.urls import include, path
+from wagtail.admin.menu import MenuItem
+from django.utils.translation import gettext_lazy as _
 
 
 @hooks.register('register_admin_urls')
 def register_admin_urls():
     return [
-        url(r'^comments/', include(urls)),
+        path('comments/', include(urls)),
     ]
 
 
@@ -17,7 +17,7 @@ def register_admin_urls():
 def register_styleguide_menu_item():
     return MenuItem(
         _('Comments'),
-        urlresolvers.reverse('wagtailcomments_xtd_pages'),
-        classnames='icon icon-fa-comments-o',
+        reverse('wagtailcomments_xtd_pages'),
+        classnames='icon icon-comment',
         order=1000
     )
