@@ -18,6 +18,6 @@ def register_styleguide_menu_item():
     return MenuItem(
         _('Comments'),
         reverse('wagtailcomments_xtd_pages'),
-        classnames='icon icon-comment',
+        classname='icon icon-comment',
         order=1000
     )
